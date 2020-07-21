@@ -1,3 +1,4 @@
+import random
 from words import cmu     #imports list from words.py file
 
 
@@ -89,6 +90,7 @@ def display_hangman(lives):
 
 
 def play(word):
+    lives = 5
     word_completion = "_" * len(word)
     guessed = False
     guessed_letters = [] #what letters have been guessed
