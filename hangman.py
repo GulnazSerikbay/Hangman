@@ -1,9 +1,13 @@
+import random
+from words import general
 from words import cmu     #imports list from words.py file
 
+lives = 5
 
 category = input("Choose one: GENERAL/CMU?").upper()
 
 def get_word():
+
     while category == "general":
         word = random.choice(general) #randomly chooses from general
     else:
