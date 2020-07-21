@@ -1,11 +1,13 @@
 import random
 from words import cmu     #imports list from words.py file
-
+from words import general
 
 category = input("Choose one: GENERAL/CMU?").upper()
 
 def get_word():
+
     while category == "general":
+
         word = random.choice(general) #randomly chooses from general
     else:
         word = random.choice(cmu) #randomly chooses from cmu
@@ -90,13 +92,14 @@ def display_hangman(lives):
 
 
 def play(word):
+
     lives = 5
     word_completion = "_" * len(word)
     guessed = False
     guessed_letters = [] #what letters have been guessed
     guessed_words = []
     print("Hey let's get started! Can you guess the word?'")
-   # print("You have " + lives + " lives.")
+    print("You have " + str(lives) + " lives.")
     print(word_completion + "\n")
 
     while not guessed and lives > 0:
@@ -109,12 +112,12 @@ def play(word):
             elif guess not in word:
                 print("Nope, " + guess + " is not in the word.\n (-_-)")
                 lives = lives - 1
-                print("You have " + lives + "lives.")
+                print("You have " + str(lives) + " lives.")
                 guessed_letters.append(guess)
 
             else:
-                print("Well done! " + guess + "is in the word. Keep going!")
-                guessed_letters.appenf(guess)
+                print("Well done! " + guess + " is in the word. Keep going!")
+                guessed_letters.append(guess)
                 word_as_list = list(word_completion)
                 indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index in indices:
@@ -130,7 +133,7 @@ def play(word):
             elif guess != word:
                 print(guess + "is not the actual word. (*_*)")
                 lives = lives - 1
-                print("You have " + lives + "lives.")
+                print("You have " + str(lives) + " lives.")
                 guesses_words.append(guess)
             else:
                 guessed = True
