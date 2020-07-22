@@ -23,9 +23,12 @@ while True:
     word = data.decode()
 
     # Print the received data
-    print('Got this string: ' + word)
+    #print('Got this string: ' + word)
 
-    result = 0
+
+
+    def get_word():
+        return word.upper()
 
     def display_hangman(lives):
         stages = [  # final state: head, torso, both arms, and both legs
@@ -103,7 +106,7 @@ while True:
 
 
     def play(word):
-
+        result = 0
         lives = 5
         word_completion = "_" * len(word)
         guessed = False
@@ -163,13 +166,10 @@ while True:
 
 
     def main():
-        return word.upper()
+        word = get_word()
         play(word)
 
-        while input("\nPlay Again? (Y/N) \n").upper() == "Y":
-           play(word)
 
-        else: s2.sendall(result)
 
     if __name__ == "__main__":
         main()
