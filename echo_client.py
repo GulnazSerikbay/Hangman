@@ -1,12 +1,18 @@
 
 import socket
 
+
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-s.connect(('unix-02.qatar.cmu.edu', 9046))
+s.connect(('localhost', 9056))
 
-s.sendall('Gulnaz Serikbay'.encode())
+
+s.sendall(input("enter your word").encode())
 
 data = s.recv(1024)
 
-print('You have this: ' + data.decode())
+print('Your word is: ' + data.decode() + "\nWait until your counterpart ends the game...")
+
+
+s.close()
