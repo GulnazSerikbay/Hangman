@@ -2,17 +2,26 @@ import random
 from words import cmu     #imports list from words.py file
 from words import general
 
-category = input("Choose one: GENERAL/CMU?").upper()
+
 
 def get_word():
 
-    while category == "general":
+    while True:
+        category = input("Choose one: GENERAL/CMU? ").upper()
 
-        word = random.choice(general) #randomly chooses from general
-    else:
-        word = random.choice(cmu) #randomly chooses from cmu
+        if category == "GENERAL":
+            word = random.choice(general) #randomly chooses from general
+            return word.upper()
 
-    return word.upper()
+        elif category == "CMU":
+            word = random.choice(cmu) #randomly chooses from cmu
+
+            return word.upper()
+
+        else:
+            print("Make a valid choice!")
+
+
 
 
 
@@ -139,19 +148,15 @@ def play(word):
                 guessed = True
                 word_completion = word
         else:
-            print("Please, try again")
+            print("Please, enter a valid answer")
+
         print(display_hangman(lives))
         print(word_completion + "\n")
+
     if guessed:
         print("YAAAY! You've guessed the word! Winner!")
     else:
-        print("OOH! You lost! Sorry, sure, you will win next time! The word was " + word)
-
-
-
-
-
-
+        print("OOH! You lost! Sorry, you will win next time! The word was " + word)
 
 
 
@@ -160,7 +165,7 @@ def main():
     word = get_word()
     play(word)
 
-    while input("Play Again? (Y/N) ").upper() == "Y":
+    while input("\nPlay Again? (Y/N) \n").upper() == "Y":
         word = get_word()
         play(word)
 
